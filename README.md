@@ -1,1 +1,2 @@
-# LGFA-Net-Hierarchical-Local-Global-Feature-Aggregation-Network-for-Micro-Expression-Recognition
+# LGFA-Net
+Our LGFA-Net model and weights will be uploaded soon
