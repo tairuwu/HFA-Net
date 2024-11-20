@@ -1,2 +1,2 @@
 # HFA-Net
-The code for the HFA-Net model will be publicly released after the paper is accepted.
+The core code of HFA-Net has been partially open-sourced, and the complete code will be released after the paper is accepted.
