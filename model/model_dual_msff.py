@@ -1,11 +1,11 @@
 from model.RMT import RMT_modify
 
 from model.mul_block import MSA
-from module import MLFA
+from module.MLFA import MLFA
 import torch.nn as nn
 import torch
 from timm.models.layers import trunc_normal_
-from module import AAFF
+from module.AAFF import AAFF
 
 
 
@@ -15,8 +15,8 @@ class DualInception(nn.Module):
         self.msa = MSA()
         self.rmt = RMT_modify()
         self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
-        self.msff = MLFA(inter_dim=1024, level=2, channel=[128, 256, 512,1024])
-        self.aff = AAFF(1024, 512)
+        self.mlfa = MLFA(inter_dim=1024, level=2, channel=[128, 256, 512,1024])
+        self.aaff = AAFF(1024, 512)
 
         self.head = nn.Linear(512, num_classes) if num_classes > 0 else nn.Identity()
 
@@ -45,10 +45,10 @@ class DualInception(nn.Module):
         mt3 = torch.cat((m3, t3), dim=1)
         mt4 = torch.cat((m4, t4), dim=1)
 
-        mt = self.msff(mt1, mt2, mt3, mt4)
+        mt = self.mlfa(mt1, mt2, mt3, mt4)
 
 
-        output = self.aff(mt4, mt)
+        output = self.aaff(mt4, mt)
 
         output = self.avgpool(output)  # B C 1
         output = torch.flatten(output, 1)
