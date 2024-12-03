@@ -80,7 +80,6 @@ class MSA(nn.Module):
 
         self.layer1 = self._make_layer(block_b, 64, 64, layers[0], stride=1)
         self.layer2 = self._make_layer(block_b, 64, 128, layers[1], stride=2)
-        # In this branch, each BasicBlock replaced by MulScaleBlock.
         self.layer3 = self._make_layer(block_b, 128, 256, layers[2], stride=2)
         self.layer4 = self._make_layer(block_b, 256, 512, layers[3], stride=2)
         self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
@@ -128,7 +127,6 @@ class MSA(nn.Module):
         of_part = self.layer2(of_part)
         x2 = of_part
 
-        # branch 2 ############################################
         of_part = self.layer3(of_part)
         x3 = of_part
 
