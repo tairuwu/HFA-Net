@@ -51,9 +51,9 @@ class Downsample(nn.Module):
         return x
 
 
-class ASFF_3(nn.Module):
+class MLFA(nn.Module):
     def __init__(self, inter_dim=512, level=0, channel=[64, 128, 256,512]):
-        super(ASFF_3, self).__init__()
+        super(MLFA, self).__init__()
 
         self.inter_dim = inter_dim
         compress_c = 8
