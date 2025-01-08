@@ -1,2 +1,2 @@
 # HFA-Net
-The core code of HFA-Net has been open-sourced, and the complete code will be released after the paper is accepted.
+HFA-Net: Hierarchical Feature Aggregation Network for Micro-Expression Recognition
